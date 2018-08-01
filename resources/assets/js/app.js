@@ -6,3 +6,7 @@
  */
 
 require('./bootstrap');
+
+window.swal = require('sweetalert2');
+
+require( 'datatables.net-bs4' )(window, $);

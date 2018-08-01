@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/**
+ * Routes Patient
+ */
+Route::group(['middleware' => 'auth', 'prefix' => 'patients', 'as' => 'patient.'], function()
+{
+    Route::get('/', 'PatientController@index')->name('index')->middleware('permission:list patients');
+    Route::get('create', 'PatientController@create')->name('create')->middleware('permission:create patients');
+    Route::post('create', 'PatientController@store')->name('store')->middleware('permission:create patients');
+});

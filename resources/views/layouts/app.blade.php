@@ -10,23 +10,35 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    {!! Html::style('https://fonts.googleapis.com/css?family=Nunito') !!}
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css') !!}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    @stack('head')
+    
 </head>
 <body>
     <div id="app">
         @include('layouts.partials.nav')
 
-        <main class="py-4">
-            @yield('content')
+        <main class="py-4 container">
+            <div class="row">
+                <aside class="col-lg-4 col-sm-12">
+                    @include('layouts.partials.sidebar')
+                </aside>
+                <div class="col-lg-8 col-sm-12">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    @include('layouts.partials.alert')
+    @stack('scripts')
 </body>
 </html>

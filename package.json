@@ -17,5 +17,9 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.12"
+    },
+    "dependencies": {
+        "datatables.net-bs4": "^1.10.19",
+        "sweetalert2": "^7.26.9"
     }
 }
